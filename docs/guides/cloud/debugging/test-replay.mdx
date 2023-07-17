@@ -42,7 +42,9 @@ Test Replay complements the existing visual artifacts provided by Cypress Cloud 
 
 :::info
 
-&#8239<Icon name="check-circle" /> Test Replay is available to **all** Cypress Cloud plans at no additional cost, subject to usage limits. Free plans allow up to 500 test results per month, while exceeding this limit requires upgrading the plan.
+&#8239<Icon name="check-circle" /> Test Replay is available to **all** Cypress Cloud plans at no additional cost, subject to usage limits.
+
+Free plans allow up to 500 test results per month, while exceeding this limit requires upgrading the plan.
 
 :::
 
@@ -71,7 +73,7 @@ Accessing the replay of your test is as simple as reviewing any other test artif
 
 ## Debugging With Test Replay
 
-This displays the Test Replay interface, which we'll unpack from top to bottom in more detail below.
+Both options above display the Test Replay interface, which we'll unpack from top to bottom in more detail below.
 
 <DocsImage
   src="/img/guides/cloud/test-replay/replay-demo.gif"
@@ -80,7 +82,7 @@ This displays the Test Replay interface, which we'll unpack from top to bottom i
 
 ### Run header
 
-The left side of the header displays the test run # with the Git branch name along with the spec, platform and browser information. Hovering on this exposes additional test meta data.
+The left side of the header displays the test run #, with the Git branch name along with the spec, platform and browser information. Hovering on this exposes additional test meta data.
 
 <DocsImage
   src="/img/guides/cloud/test-replay/test-replay-header.jpg"
@@ -125,12 +127,28 @@ will be visible in the test replay.
 
 :::
 
-If you'd like not to capture test data for replay purposes you can simply "shut off" Test Replay in project settings.
+If you'd like not to capture test data for replay and debugging purposes you can simply "shut off" Test Replay in project settings.
 
 <DocsImage
   src="/img/guides/cloud/test-replay/kill-switch.png"
   alt="Test Replay opt-out controls"
 />
+
+## Troubleshooting
+
+**If Test Replay is not present or disabled in Cypress Cloud:**
+
+1. Confirm runs have been recorded to Cypress Cloud using Cypress `v13` or later.
+2. Ensure tests were recorded using a Chromium-based browser(Chrome, Edge, Electron).
+3. Check that Test Replay is enabled in project settings.
+
+**If performance loss is experiecned in Cypress with Test Replay enabled:**
+
+Cypress may become less performant under certain circumstances with Test Replay. You may be able to balance performance by taking some additional measures.
+
+Cypress uses a powerful [command log](/guides/core-concepts/cypress-app#Command-Log) locally to display every command executed in your spec. Yet, the command log in the test replay on Cypress Cloud is recreated at a _later_ time. If you are not using screenshots or video or don't need the command log displayed in these artifacts, you can [disable the command log](/guides/references/troubleshooting#Disable-the-Command-Log) when running the test.
+
+This can positively affect test speed without loosing the interactive benefit of the command log during the Test Replay. You can still keep the command log enabled for tests run in non-Chromium browsers to keep its benefit in your test artifacts.
 
 ## See also
 
