@@ -330,9 +330,9 @@ Wind back the clock to any point in an application's execution and directly inte
 
 ### <Icon name="angle-right" /> How is Cypress Test Replay different from other "replay" services?
 
-There is an important distinction between _session replay_(Log Rocket, Fullstory, DataDog, etc) and Cypress Test Replay. In session replay user actions are captured as the application is used and offered back in a replayable format, usually video or stitched DOM snapshots. These are valuable tools for gathering product insight such as user behavior, per session.
+There is an important distinction between _session_ replay services(LogRocket, Fullstory, DataDog, etc) and Cypress Test Replay. In session replay user actions are captured as the application is used and delivered back in a replayable format, usually video or stitched DOM snapshots. These are valuable tools for gathering product insight such as user behavior, per session.
 
-Cypress Test Replay captures every detail of your test runs as they happen in CI. Remember, these tests are running in a headless manner on a virtual machine in the cloud with no UI being rendered. Sometimes test will error or fail indicating an issue in your applicaiton. Since Cypress Cloud is monitoring the health of your CI test suite, each Test Replay offers a chance to step back in time with a full UI to analyse and leverage [time travel debugging](/guides/core-concepts/cypress-app#Time-traveling), network requests, console logs, javascript errors, and element rendering to adress problems directly. This is incredibly valuable for developer and team productivity. No more hours wasted recreating issues locally!
+Cypress Test Replay captures every detail of your test runs as they happen in CI. Remember, these tests are running in a headless manner on a virtual machine in the cloud with no UI being rendered. Sometimes test will error or fail indicating an issue in your applicaiton. Since Cypress Cloud is monitoring the health of your CI test suite, each Test Replay offers a chance to step back in time with a full UI to analyze and leverage [time travel debugging](/guides/core-concepts/cypress-app#Time-traveling), network requests, console logs, JavaScript errors, and element rendering to address problems directly. This is incredibly valuable for developer and team productivity. No more hours wasted recreating issues in CI on your local machine!
 
 ### <Icon name="angle-right" /> Does the replay reflect the real time it took for the test to run?
 
@@ -355,7 +355,9 @@ We will continue to expand and can see a need to support (to name a few):
 
 ### <Icon name="angle-right" /> Can I use Test Replay for tests recorded in different browsers?
 
-Test Replay currently supports Chromium-based browsers only. You can still record and capture test [artifacts](/guides/cloud/debugging/recorded-runs#Artifacts) (screenshots, videos and CI logs) in other browsers, while leveraging Test Replay for Chrome, Edge, and Electron.
+Test Replay leverages [Chrome DevTools Protocol(CDP)](https://chromedevtools.github.io/devtools-protocol/), so currently supports Chromium-based browsers (Chrome, Edge, and Electron) only.
+
+Test Replay would be disabled, with a message that it's only available on Chromium, for tests run in Firefox or Webkit (Safari). You can still record and capture test [artifacts](/guides/cloud/debugging/recorded-runs#Artifacts) (screenshots, videos and CI logs) via other browsers in separate runs.
 
 ### <Icon name="angle-right" /> Can I replay tests from historical Cypress Cloud runs?
 
